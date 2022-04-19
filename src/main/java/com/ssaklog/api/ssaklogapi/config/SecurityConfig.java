@@ -1,4 +1,4 @@
-package com.ssaklog.api.ssaklogapi.api.config;
+package com.ssaklog.api.ssaklogapi.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
