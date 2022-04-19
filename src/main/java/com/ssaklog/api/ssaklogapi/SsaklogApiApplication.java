@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SsaklogApiApplication {
 
 	public static void main(String[] args) {
-		System.out.println(">>>>> 22.04.19 test");
+		System.out.println(">>>>> 22.04.19 test >> ");
 		SpringApplication.run(SsaklogApiApplication.class, args);
 	}
 

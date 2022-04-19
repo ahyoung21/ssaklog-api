@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("")
 @RequiredArgsConstructor
 public class HomeController {
 
-    @GetMapping("")
+    @GetMapping("/")
     public String home() {
         return "Hello !!NEW!! SsakLog";
     }
