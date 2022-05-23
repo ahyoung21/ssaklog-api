@@ -2,3 +2,13 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://ssaklog-webservice.ckbdry9eswq9.us-west-2.rds.amazonaws.com:3306/ssakLog_webservice
+    username: admin
+    password: A1s2d3f4g5-
+  jpa:
+    hibernate:
+      database-platform: org.hibernate.dialect.MariaDB103Dialect
+      naming: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
