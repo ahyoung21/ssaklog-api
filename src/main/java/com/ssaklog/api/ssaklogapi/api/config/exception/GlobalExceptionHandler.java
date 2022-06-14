@@ -1,0 +1,18 @@
+package com.ssaklog.api.ssaklogapi.api.config.exception;
+
+import com.ssaklog.api.ssaklogapi.api.exception.CustomException;
+import com.ssaklog.api.ssaklogapi.api.vo.ErrorResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+@RestControllerAdvice
+public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(value = { CustomException.class })
+    protected ResponseEntity<ErrorResponse> handleCustomException(CustomException e) {
+        return ErrorResponse.toResponseEntity(e.getErrorCode());
+    }
+
+}
