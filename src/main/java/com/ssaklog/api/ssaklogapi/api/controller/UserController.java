@@ -2,6 +2,7 @@ package com.ssaklog.api.ssaklogapi.api.controller;
 
 import com.ssaklog.api.ssaklogapi.api.dto.UserTempAddRequest;
 import com.ssaklog.api.ssaklogapi.api.entity.User;
+import com.ssaklog.api.ssaklogapi.api.entity.common.CommonResponse;
 import com.ssaklog.api.ssaklogapi.api.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,8 @@ public class UserController {
         return ResponseEntity.ok(userService.tempAdd(request));
     }
 
-    @PostMapping("/test")
-    public void test() {
-        System.out.print("test");
+    @PostMapping("/response")
+    public CommonResponse temp() {
+        return new CommonResponse();
     }
 }
