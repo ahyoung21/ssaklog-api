@@ -3,6 +3,7 @@ package com.ssaklog.api.ssaklogapi.api.controller;
 import com.ssaklog.api.ssaklogapi.api.dto.UserAddRequest;
 import com.ssaklog.api.ssaklogapi.api.dto.UserTempAddRequest;
 import com.ssaklog.api.ssaklogapi.api.entity.User;
+import com.ssaklog.api.ssaklogapi.api.entity.common.CommonResponse;
 import com.ssaklog.api.ssaklogapi.api.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class UserController {
     public ResponseEntity<User> tempSignUp(@RequestBody UserTempAddRequest request) {
         return ResponseEntity.ok(userService.tempAdd(request));
     }
+
 
     @ApiOperation(value = "회원가입", notes = "실제 회원가입을 진행한다.")
     @PostMapping("/sign-up")
