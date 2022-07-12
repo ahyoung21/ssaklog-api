@@ -22,8 +22,5 @@ public class UserController {
         return ResponseEntity.ok(userService.tempAdd(request));
     }
 
-    @PostMapping("/response")
-    public CommonResponse temp() {
-        return new CommonResponse();
-    }
+
 }
