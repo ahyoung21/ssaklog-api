@@ -34,7 +34,7 @@ public class ErrorResponseMeta {
 
     public ErrorResponseMeta(ErrorCode errorCode) {
         this.code = errorCode.getHttpStatus().value();
-        this.error = errorCode.getHttpStatus().name();
+        this.error = errorCode.name();
         this.message = errorCode.getMessage();
         this.dateTime = LocalDateTime.now();
     }

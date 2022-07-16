@@ -8,6 +8,9 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public enum ErrorCode {
 
+    /* 100 CONTINUE : 정보성 상태 코드 */
+    TEST_ERROR(HttpStatus.CONTINUE, "ErrorCode를 통한 테스트 에러입니다."),
+
     /* 400 BAD_REQUEST : 잘못된 요청 */
     EMPTY_USER_ID(HttpStatus.BAD_REQUEST, "아이디를 입력해주세요."),
     EMPTY_USER_NAME(HttpStatus.BAD_REQUEST, "이름을 입력해주세요."),
