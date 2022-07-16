@@ -17,7 +17,10 @@ public enum ErrorCode {
     EMPTY_PASSWORD(HttpStatus.BAD_REQUEST, "비밀번호를 입력해주세요."),
     EMPTY_BIRTHDAY(HttpStatus.BAD_REQUEST, "생년월일을 입력해주세요."),
     EMPTY_EMAIL(HttpStatus.BAD_REQUEST, "이메일을 입력해주세요."),
-    EMPTY_CERTIFICATE_NUMBER(HttpStatus.BAD_REQUEST, "인증번호를 입력해주세요")
+    EMPTY_CERTIFICATE_NUMBER(HttpStatus.BAD_REQUEST, "인증번호를 입력해주세요"),
+
+    /* 409 CONFLICT : 서버와의 충돌 */
+    ALREADY_EXIST_USER_ID(HttpStatus.CONFLICT, "해당 아이디가 존재합니다.")
     ;
 
     private final HttpStatus httpStatus;
