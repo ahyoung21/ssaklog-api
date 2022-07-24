@@ -1,10 +1,13 @@
 package com.ssaklog.api.ssaklogapi.api.service;
 
+import com.ssaklog.api.ssaklogapi.api.converter.UserConverter;
 import com.ssaklog.api.ssaklogapi.api.dto.AddUserRequest;
 import com.ssaklog.api.ssaklogapi.api.dto.AddUserTempRequest;
 import com.ssaklog.api.ssaklogapi.api.dto.CheckUserOverlapIdRequest;
 import com.ssaklog.api.ssaklogapi.api.entity.User;
+import com.ssaklog.api.ssaklogapi.api.enums.DormantStatusEnum;
 import com.ssaklog.api.ssaklogapi.api.enums.ErrorCode;
+import com.ssaklog.api.ssaklogapi.api.enums.WithdrawStatusEnum;
 import com.ssaklog.api.ssaklogapi.api.exception.CustomException;
 import com.ssaklog.api.ssaklogapi.api.repository.UserRepository;
 import com.ssaklog.api.ssaklogapi.util.CommonUtil;
@@ -21,6 +24,8 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final UserConverter userConverter;
+
     /* 유효성 검사용 key TODO : 따로 관리해야 할 것 같음 */
     private final String USER_ID_REGEX = "^[a-z0-9_-]{5,20}$";
     private final String PASSWORD_REGEX = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[~!@#$%^&*()+|=])[A-Za-z\\d~!@#$%^&*()+|=]{8,16}$";
@@ -34,23 +39,49 @@ public class UserService {
 
     private final String patternDate = "yyyy-MM-dd";
 
+    /**
+     * 회원 임시 저장
+     *
+     * @param request
+     * @return
+     */
     public User tempAdd(AddUserTempRequest request) {
         return userRepository.save(User
                 .builder()
                 .userId(request.getUserId())
-                .password(request.getPassword())
+                .password(CommonUtil.getSha512(request.getPassword()))
                 .userName("test")
                 .joinDate(LocalDateTime.now())
-                .dormantYn("N")
-                .withdrawYn("N")
+                .dormantYn(DormantStatusEnum.N.getCode())
+                .withdrawYn(WithdrawStatusEnum.N.getCode())
                 .build());
     }
 
+    /**
+     * 회원 저장
+     *
+     * @param request
+     * @return
+     */
     public User add(AddUserRequest request) {
         validateSignUp(request);
-        return null;
+
+        try {
+            User user = userConverter.signUpRequestToUser(request);
+            userRepository.save(user);
+
+            return user;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new CustomException(ErrorCode.COMMON_ERROR);
+        }
     }
 
+    /**
+     * 회원 가입 request 유효성 검사
+     *
+     * @param request
+     */
     private void validateSignUp(AddUserRequest request) {
         /* 아이디 */
         if (!Optional.ofNullable(request.getUserId()).isPresent()) {

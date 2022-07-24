@@ -34,7 +34,7 @@ public class UserController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "사용 가능"),
             @ApiResponse(code = 409, message = "아이디 중복"),
-            @ApiResponse(code = 500, message = "오류 발생") // TODO : 구분 필요?
+            @ApiResponse(code = 500, message = "오류 발생")
     })
     @GetMapping("/check-overlap-id")
     public CommonResponse checkOverlapId(CheckUserOverlapIdRequest request) {
@@ -46,6 +46,10 @@ public class UserController {
     }
 
     @ApiOperation(value = "회원가입", notes = "실제 회원가입을 진행한다. (유효성 체크까지만 됨)")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "저장 완료"),
+            @ApiResponse(code = 500, message = "저장 중 에러")
+    })
     @PostMapping("/sign-up")
     public CommonResponse signUp(AddUserRequest request) {
         return new CommonResponse(userService.add(request));

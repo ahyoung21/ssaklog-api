@@ -29,7 +29,10 @@ public enum ErrorCode {
 
     /* 409 CONFLICT : 서버와의 충돌 */
     ALREADY_EXIST_USER_ID(HttpStatus.CONFLICT, "해당 아이디가 존재합니다."),
-    ALREADY_EXIST_EMAIL(HttpStatus.CONFLICT, "해당 이메일이 존재합니다.")
+    ALREADY_EXIST_EMAIL(HttpStatus.CONFLICT, "해당 이메일이 존재합니다."),
+
+    /* 500 BAD_GATEWAY : */
+    COMMON_ERROR(HttpStatus.BAD_GATEWAY, "오류가 발생했습니다.")
     ;
 
     private final HttpStatus httpStatus;

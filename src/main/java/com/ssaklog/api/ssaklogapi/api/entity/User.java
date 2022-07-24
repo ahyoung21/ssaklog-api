@@ -1,12 +1,13 @@
 package com.ssaklog.api.ssaklogapi.api.entity;
 
+import com.ssaklog.api.ssaklogapi.api.enums.DormantStatusEnum;
+import com.ssaklog.api.ssaklogapi.api.enums.WithdrawStatusEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Builder
@@ -14,6 +15,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(name = "USER")
+@NoArgsConstructor
+@AllArgsConstructor
 @ApiModel(value = "회원")
 public class User {
 
@@ -45,7 +48,7 @@ public class User {
 
     @Column(name = "birthDate")
     @ApiModelProperty(value = "생년월일")
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
 
     @Column(name = "profileUrl")
     @ApiModelProperty(value = "프로필 url")
@@ -63,4 +66,21 @@ public class User {
     @ApiModelProperty(value = "가입")
     private LocalDateTime joinDate;
 
+    public User(String userId
+            , String userName
+            , String password
+            , String levelType
+            , String email
+            , String birthDate) {
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+        this.levelType = levelType;
+        this.email = email;
+        this.birthDate = LocalDate.parse(birthDate);
+        this.profileUrl = "";
+        this.withdrawYn = WithdrawStatusEnum.N.getCode();
+        this.dormantYn = DormantStatusEnum.N.getCode();
+        this.joinDate = LocalDateTime.now();
+    }
 }
