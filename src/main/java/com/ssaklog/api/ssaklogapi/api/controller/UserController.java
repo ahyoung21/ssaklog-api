@@ -45,9 +45,9 @@ public class UserController {
         }
     }
 
-    @ApiOperation(value = "회원가입", notes = "실제 회원가입을 진행한다. (아직 사용 x)")
+    @ApiOperation(value = "회원가입", notes = "실제 회원가입을 진행한다. (유효성 체크까지만 됨)")
     @PostMapping("/sign-up")
-    public ResponseEntity<User> signUp(@RequestBody AddUserRequest request) {
-        return ResponseEntity.ok(userService.add(request));
+    public CommonResponse signUp(AddUserRequest request) {
+        return new CommonResponse(userService.add(request));
     }
 }

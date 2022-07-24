@@ -16,6 +16,9 @@ public class AddUserRequest {
     @ApiModelProperty(value = "비밀번호")
     private String password;
 
+    @ApiModelProperty(value = "비밀번호 재확인 값")
+    private String checkPassword;
+
     @ApiModelProperty(value = "이름")
     private String userName;
 
