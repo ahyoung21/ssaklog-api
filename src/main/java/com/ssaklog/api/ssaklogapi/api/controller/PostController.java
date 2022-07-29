@@ -17,13 +17,13 @@ public class PostController {
 
     private final PostService postService;
 
-    @ApiOperation(value = "게시글 목록 조회")
+    @ApiOperation(value = "게시글 목록 조회", response = ListPostResponse.class, responseContainer = "List")
     @GetMapping(path = "/list")
     public CommonResponse listPost(@ApiParam("목록 조회 할 요청 정보") ListPostRequest request) {
         return new CommonResponse(postService.listPost(request));
     }
 
-    @ApiOperation(value = "게시글 상세 조회")
+    @ApiOperation(value = "게시글 상세 조회", response = DetailPostResponse.class)
     @GetMapping(path = "")
     public CommonResponse detailPost(@ApiParam("상세 조회 할 게시글 정보") DetailPostRequest request) {
         return new CommonResponse(postService.detailPost(request));
