@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @ApiModel(value = "게시글 삭제 정보 request")
 public class RemovePostRequest {
 
-    @ApiModelProperty(value = "게시글 번호")
+    @ApiModelProperty(value = "게시글 번호", example = "0")
     private int postSeq;
 }

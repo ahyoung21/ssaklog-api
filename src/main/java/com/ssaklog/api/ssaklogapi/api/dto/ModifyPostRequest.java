@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @ApiModel(value = "게시글 수정 정보 request")
 public class ModifyPostRequest {
 
-    @ApiModelProperty(value = "게시글 번호")
+    @ApiModelProperty(value = "게시글 번호", example = "0")
     private int postSeq;
 
     @ApiModelProperty(value = "제목")

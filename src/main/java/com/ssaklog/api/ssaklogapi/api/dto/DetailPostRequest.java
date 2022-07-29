@@ -8,7 +8,7 @@ import lombok.Getter;
 @ApiModel(value = "게시글 상세 정보 request")
 public class DetailPostRequest {
 
-    @ApiModelProperty(value = "게시글 번호")
+    @ApiModelProperty(value = "게시글 번호", example = "0")
     private final int postSeq;
 
     public DetailPostRequest(int postSeq) {
