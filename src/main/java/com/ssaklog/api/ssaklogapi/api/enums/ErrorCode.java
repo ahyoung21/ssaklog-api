@@ -34,6 +34,8 @@ public enum ErrorCode {
     NOT_EXIST_POST(HttpStatus.BAD_REQUEST, "게시글이 존재하지 않습니다."),
     NOT_MATCH_POST_USER(HttpStatus.BAD_REQUEST, "게시글 작성자가 아닙니다."),
 
+    NOT_FOUND_USER(HttpStatus.BAD_REQUEST, "회원 정보가 존재하지 않습니다."),
+
     /* 409 CONFLICT : 서버와의 충돌 */
     ALREADY_EXIST_USER_ID(HttpStatus.CONFLICT, "해당 아이디가 존재합니다."),
     ALREADY_EXIST_EMAIL(HttpStatus.CONFLICT, "해당 이메일이 존재합니다."),

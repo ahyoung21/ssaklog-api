@@ -8,6 +8,9 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     int countAllByUserId(String userId);
+
     int countAllByEmail(String email);
+
+    User findTopByUserIdOrderByWithdrawYnDescUserSeqDesc(String userId);
 
 }
